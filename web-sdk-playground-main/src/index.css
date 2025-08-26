@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fintech Design System - Modern gradients, glassmorphism, and beautiful colors */
+
+@layer base {
+  :root {
+    /* Core Background System */
+    --background: 240 10% 3.9%;
+    --background-secondary: 240 8% 6%;
+    --foreground: 0 0% 98%;
+
+    /* Card System with Glassmorphism */
+    --card: 240 10% 3.9%;
+    --card-secondary: 240 8% 8%;
+    --card-foreground: 0 0% 98%;
+    --card-glass: 240 10% 12%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Brand Colors - Modern Fintech Palette */
+    --primary: 217 91% 60%;
+    --primary-dark: 217 91% 45%;
+    --primary-light: 217 91% 75%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 95% 75%;
+    --secondary-dark: 270 95% 60%;
+    --secondary-foreground: 240 10% 3.9%;
+
+    --accent: 142 76% 36%;
+    --accent-dark: 142 76% 25%;
+    --accent-foreground: 0 0% 98%;
+
+    --muted: 240 5% 84%;
+    --muted-foreground: 240 5% 65%;
+
+    /* Status Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+    
+    --warning: 45 93% 58%;
+    --warning-foreground: 240 10% 3.9%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* UI Elements */
+    --border: 240 6% 20%;
+    --input: 240 6% 15%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(var(--card-glass)) 0%, hsl(var(--card-secondary)) 100%);
+    --gradient-mesh: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(270 95% 75%) 100%);
+
+    /* Shadows & Effects */
+    --shadow-primary: 0 10px 30px -5px hsl(var(--primary) / 0.3);
+    --shadow-card: 0 8px 30px -5px hsl(240 10% 3.9% / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.4);
+
+    /* Animations */
+    --animation-speed: 300ms;
+    --animation-curve: cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Light mode (optional - keeping dark as primary) */
+  .light {
+    --background: 0 0% 100%;
+    --background-secondary: 0 0% 98%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-secondary: 0 0% 98%;
+    --card-foreground: 240 10% 3.9%;
+    --card-glass: 0 0% 95%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 95%;
+    --muted-foreground: 240 4% 46%;
+    
+    --shadow-card: 0 8px 30px -5px hsl(240 10% 3.9% / 0.1);
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background: hsl(var(--background));
+    background-image: 
+      radial-gradient(at 40% 20%, hsl(var(--primary) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsl(var(--secondary) / 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsl(var(--accent) / 0.1) 10px, transparent 50%);
+  }
+
+  /* Smooth animations for all elements */
+  * {
+    transition: all var(--animation-speed) var(--animation-curve);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background-secondary));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.6);
+  }
+}
+
+@layer components {
+  /* Glassmorphism utility */
+  .glass {
+    background: hsl(var(--card-glass) / 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.2);
+  }
+
+  /* Gradient text utility */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effect */
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+}
